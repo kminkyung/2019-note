@@ -18,22 +18,39 @@
 			<h4 class="d-inline-block">국민노트앱</h4>
 		</div>
 		<div class="bts d-flex">
-			<button class="btn btn-success">
+			<button class="btn btn-success" id="btLogin">
 				<i class="fab fa-google">구글로그인</i>
 			</button>
-			<div class="email" style="display:none;">
-				<div class="d-inline-block">mminkyung.k@gmail.com</div>
-				<button class="btn btn-danger">
+			<div class="email align-items-center" style="display: none;">
+				<div class="icon mr-2">
+					<img src="" class="w-100">
+				</div>
+				<div class="email-txt mr-3"></div>
+				<button class="btn btn-danger" id="btLogout">
 					<i class="fas fa-sign-out-alt">로그아웃</i>
 				</button>
 			</div>
 		</div>
 	</header>
-	<div class="wrap h-100 d-flex">
 
-
+	<div class="wrap" style="height: calc(100% - 70px);">
+		<div class="row h-100 position-relative" style="margin: 0;">
+			<div class="lists col-10 col-md-4 h-100 bg-info">
+				<ul class="list border border-white rounded p-3 mt-3 bg-info text-light position-relative">
+					<li class="d-flex">
+						<h1 class="bg-light text-primary rounded-circle text-center mr-3" style="width: 55px; height: 55px;">메</h1>
+						<div>메모입니다.</div>
+					</li>
+					<li>2019-08-26 16:22:23</li>
+					<li class="position-absolute" style="bottom: 10px; right: 10px; cursor: pointer;"><i class="fas fa-trash-alt"></i></li>
+				</ul>
+			</div>
+			<div class="conts col-12 col-md-8 h-100 bg-secondary"></div>
+		</div>
 	</div>
 
+
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
 	<script src="/__/firebase/6.4.2/firebase-app.js"></script>
 	<script src="/__/firebase/6.4.2/firebase-auth.js"></script>
 	<script src="/__/firebase/6.4.2/firebase-database.js"></script>
