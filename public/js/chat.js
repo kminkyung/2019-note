@@ -12,7 +12,7 @@ const _email = document.querySelector("#email");
 // 데이터베이스 관련 전역변수
 const _btSave = document.querySelector("#btSave");
 const _content = document.querySelector("#content");
-const _lists = document.querySelector(".lists");
+const _chats = document.querySelector(".chats");
 
 // 인증관련 이벤트
 _btLogin.addEventListener("click", function(){
@@ -24,35 +24,44 @@ _btLogout.addEventListener("click", function(){
 });
 
 auth.onAuthStateChanged(function(data){  // parameter 는 au, data 등 무엇을 써도 상관없다. onAuthStateChanged Method는 auth 의 변한 상태를 감지해서 param 으로 data를 받아서 event를 실행
-	// console.log(data);
+	console.log(data);
 	user = data; // 지역변수 값을 전역변수에 넣는다
-	if(data) { 
+	if(data) {
 		_email.innerHTML = data.email + "/" + data.uid;
-		_lists.innerHTML = "";
+		_chats.innerHTML = "";
 		dbInit(); //auth 상태가 변하면(login이 끝났으면) dbInit 하도록 한다.
 	}
-	else _email.innerHTML = ""; //null
+	else _email.innerHTML = "";
 });
 
 // null = false
 
 // 데이터베이스 관련 이벤트
 function dbInit() {
-  db.ref("root/notes/"+user.uid).on("child_added", onAdd); //firebase database 가 가지고있는 on event method
-  db.ref("root/notes/"+user.uid).on("child_removed", onRev);
-  db.ref("root/notes/"+user.uid).on("child_changed", onChg);
+  db.ref("root/chats/").on("child_added", onAdd); //firebase database 가 가지고있는 on event method
+  db.ref("root/chats/").on("child_removed", onRev);
+  db.ref("root/chats/").on("child_changed", onChg);
 }
 
 
 // 데이터가 추가 이벤트 후 실행되는 콜백함수
 function onAdd(data) {
 	console.log(data.val().content + "/" + data.val().time);
+	var outerCls = "justify-content-start";
+	var innerCls = "bg-primary";
+	if(data.val().uid == user.uid) {
+		outerCls = "justify-content-end";
+		innerCls = "bg-success";
+	}
 	var html = `
-	<ul class="list my-3 row border-bottom border-dark">
-		<li class="col-8 p-2">${data.val().content}</li>
-		<li class="col-4 p-2">${dspDate(new Date(data.val().time))}</li>
-	</ul>`;
-	_lists.innerHTML = html + _lists.innerHTML; //기존의 data가 밑으로 오고, 새 data 가 위로 오게 만든다.
+	<div class="d-flex ${outerCls}" style="flex: 1 0 100%;">
+		<ul class="chat p-3 text-left text-light rounded mb-5 position-relative ${innerCls}">
+			<li class="f-0875">${data.val().name} : </li>
+			<li class="f-125">${data.val().content}</li>
+			<li class="f-0875 text-secondary position-absolute mt-3">${dspDate(new Date(data.val().time), 5)}</li>
+		</ul>
+	</div>`;
+	_chats.innerHTML = html + _chats.innerHTML; //기존의 data가 밑으로 오고, 새 data 가 위로 오게 만든다.
 }
 // 데이터가 삭제 이벤트 후 실행되는 콜백함수
 function onRev(data) {
@@ -71,8 +80,11 @@ _btSave.addEventListener("click", function(e){
 		_content.focus();
 		return false;
 	}
-	db.ref("root/notes/"+user.uid).push({
+	db.ref("root/chats/").push({
+		uid: user.uid,
+		name: user.displayName,
 		content: content, //data명 content 의 input content를 넣는다.
 		time: new Date().getTime() //timestamp로 저장
-	}).key; // 고유 key를 생성해서 넣기 firebase에서 data에 key붙여준다. 이 구문을 넣지않아도 key값은 생성되지만 정확한 문법은 이것임.
+	}).key; // 고유 key를 생성해서 넣기
+	_content.val()= "";
 });
