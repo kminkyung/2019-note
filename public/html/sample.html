@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>firebase exercise</title>
+	<link rel="stylesheet" href="../css/fa.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base-bootstrap.css">
+</head>
+
+<body>
+	<div class="container text-center p-3">
+		<button id="btLogin" class="btn btn-primary">로그인</button>
+		<button id="btLogout" class="btn btn-danger">로그아웃</button>
+		<div id="email" class="my-3 p-3 border"></div>
+		<ul class="row">
+			<li class="col-10"><input type="text" id="content" class="form-control"></li>
+			<li class="col-2"><button type="submit" id="btSave" class="btn btn-primary">저장</button></li>
+		</ul>
+		<div class="lists mt-5">
+			<ul class="list my-3 row border-bottom border-dark">
+				<li class="col-8 p-2">내용입니다.</li>
+				<li class="col-4 p-2">2019-08-23 11:02:11</li>
+			</ul>
+		</div>
+	</divc>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
+	<script src="/__/firebase/6.4.2/firebase-app.js"></script>
+	<script src="/__/firebase/6.4.2/firebase-auth.js"></script>
+	<script src="/__/firebase/6.4.2/firebase-database.js"></script>
+	<script src="/__/firebase/6.4.2/firebase-messaging.js"></script>
+	<script src="/__/firebase/6.4.2/firebase-storage.js"></script>
+	<script src="/__/firebase/init.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/sample.js"></script>
+</body>
+
+</html>
