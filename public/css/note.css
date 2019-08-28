@@ -16,9 +16,21 @@ html, body {
 .lists {
 	position: absolute;
 	z-index: 1;
+	height: 100%;
+	overflow-y: auto;
+}
+
+#btWing {
+	padding: 0.25rem 0.75rem;
+	text-align: center;
+	border: 1px solid white;
+	display: inline-block;
+	border-radius: 3px;
+	margin-right: 1rem;
 }
 
 @media screen and (min-width: 768px) {
 	.email-txt {display: block;}
 	.lists {position: static;}
+	#btWing {display: none;}
 }

@@ -53,16 +53,25 @@ function onAdd(data) {
 		outerCls = "justify-content-end";
 		innerCls = "bg-success";
 	}
-	var html = `
+/* 	var html = `
 	<div class="d-flex ${outerCls}" style="flex: 1 0 100%;">
 		<ul class="chat p-3 text-left text-light rounded mb-5 position-relative ${innerCls}">
 			<li class="f-0875">${data.val().name} : </li>
 			<li class="f-125">${data.val().content}</li>
 			<li class="f-0875 text-secondary position-absolute mt-3">${dspDate(new Date(data.val().time), 5)}</li>
 		</ul>
-	</div>`;
+	</div>`; */
+	var html = '<div class="d-flex '+outerCls+'" style="flex: 1 0 100%;">';
+	html += '<ul class="chat p-3 text-left text-light rounded mb-5 position-relative '+innerCls+'">';
+	html += '<li class="f-0875">'+data.val().name+' : </li>';
+	html += '<li class="f-125">'+data.val().content+'</li>';
+	html += '<li class="f-0875 text-secondary position-absolute mt-3">';
+	html += dspDate(new Date(data.val().time), 5)+'</li>';
+	html += '</ul>';
+	html += '</div>';
 	_chats.innerHTML = html + _chats.innerHTML; //기존의 data가 밑으로 오고, 새 data 가 위로 오게 만든다.
 }
+
 // 데이터가 삭제 이벤트 후 실행되는 콜백함수
 function onRev(data) {
 
