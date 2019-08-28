@@ -106,8 +106,8 @@ function dataRev(obj) {
 }
 
 // onclick 함수 : dataGet(this)
-function dataGet(obj) {
-	nowKey = obj.getAttribute("id");
+function dataGet(obj) { // obj = ul
+	nowKey = obj.getAttribute("id"); 
 	db.ref("root/notes/"+user.uid+"/"+nowKey).once("value").then((data) => {
 		_content.value = data.val().content;
 	}); // on과 once. once는 event를 한번만 작동. key 의 value를 한번만 가져옴
