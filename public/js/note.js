@@ -99,7 +99,7 @@ function onChg(data) {
 function dataRev(obj) {
 	event.stopPropagation();
 	// console.log(obj.parentNode.getAttribute("id"));
-	if(confirm("진심 삭제?")) {
+	if(confirm("정말로 삭제하시겠습니까?")) {
 		var key = obj.parentNode.parentNode.getAttribute("id");
 		db.ref("root/notes/"+user.uid+"/"+key).remove(); // Firebase 의 remove() Method
 	}
