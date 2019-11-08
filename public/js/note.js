@@ -71,7 +71,7 @@ function dbInit() {
 function onAdd(data) { //추가된 data 받기
 	// console.log(data);
 	var html = '';
-	html += '<ul id ="'+data.key+'" class="list border border-white rounded p-3 mt-3 bg-info text-light position-relative" onclick="dataGet(this)">';
+	html += '<ul id="'+data.key+'"class="list border-bottom p-3 position-relative" onclick="dataGet(this)">';
 	html += '<li class="d-flex">';
 	html += '<h1 class="icon bg-light text-dark rounded-circle text-center mr-3 flex-shrink-0" style="width: 55px; height: 55px;">'+data.val().icon+'</h1>';
 	html += '<div class="cont">'+data.val().content.substring(0, 50)+'</div>';

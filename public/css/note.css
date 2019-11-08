@@ -1,8 +1,18 @@
+/* 
+Yellow
+color: #faf399;
+*/
+
 
 html, body {
 	width: 100%;
 	height: 100%;
 }
+
+header {
+	background-color: #ffffff;
+}
+
 
 .icon {
 	width: 32px;
@@ -13,21 +23,27 @@ html, body {
 }
 
 .email-txt {display: none;}
+
 .lists {
 	position: absolute;
 	z-index: 1;
 	height: 100%;
 	overflow-y: auto;
+	background-color: #ffffff;
+	padding: 0 !important;
 }
-
+.list {
+	background-color: #ffffff;
+}
 #btWing {
 	padding: 0.25rem 0.75rem;
 	text-align: center;
-	border: 1px solid white;
+	border: 1px solid #ffffff;
 	display: inline-block;
 	border-radius: 3px;
 	margin-right: 1rem;
 }
+
 
 @media screen and (min-width: 768px) {
 	.email-txt {display: block;}
