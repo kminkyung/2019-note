@@ -19,7 +19,6 @@ header {
 	height: 32px;
 	border-radius: 50%;
 	overflow: hidden;
-	background-color: darkblue;
 }
 
 .email-txt {display: none;}
@@ -30,11 +29,12 @@ header {
 	height: 100%;
 	overflow-y: auto;
 	background-color: #ffffff;
-	padding: 0 !important;
+	padding: 0;
 }
 .list {
 	background-color: #ffffff;
 }
+
 #btWing {
 	padding: 0.25rem 0.75rem;
 	text-align: center;
@@ -44,6 +44,21 @@ header {
 	margin-right: 1rem;
 }
 
+.btn {
+	border-radius: 0;
+	border: none;
+	box-shadow: -12px 31px 151px -46px rgba(0,0,0,0.75);
+}
+.btn-primary, .btn-danger {
+	background-color: #000000;
+}
+
+.btn-success {
+	background-color: #aaaaaa;
+}
+.btn-success:hover {
+	background-color: #000000;
+}
 
 @media screen and (min-width: 768px) {
 	.email-txt {display: block;}

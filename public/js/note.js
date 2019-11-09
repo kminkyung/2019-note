@@ -59,6 +59,7 @@ _btSave.addEventListener("click", (e) => {
 	nowKey = null;
 });
 
+
 // Database init 
 function dbInit() {
 	_lists.innerHTML = '';
@@ -74,9 +75,9 @@ function onAdd(data) { //추가된 data 받기
 	html += '<ul id="'+data.key+'"class="list border-bottom p-3 position-relative" onclick="dataGet(this)">';
 	html += '<li class="d-flex">';
 	html += '<h1 class="icon bg-light text-dark rounded-circle text-center mr-3 flex-shrink-0" style="width: 55px; height: 55px;">'+data.val().icon+'</h1>';
-	html += '<div class="cont">'+data.val().content.substring(0, 50)+'</div>';
+	html += '<div class="cont f-1125">'+data.val().content.substring(0, 50)+'</div>';
 	html += '</li>';
-	html += '<li>'+dspDate(new Date(data.val().time))+'</li>'; //jQuery val()아님주의. firebase 의 객체 중 val이라는 function
+	html += '<li class="f-0875">'+dspDate(new Date(data.val().time))+'</li>'; //jQuery val()아님주의. firebase 의 객체 중 val이라는 function
 	html += '<li class="position-absolute" style="bottom: 10px; right: 10px; cursor: pointer;">';
 	html += '<i class="fas fa-trash-alt" onclick="dataRev(this)"></i></li>';
 	html += '</ul>';
@@ -114,9 +115,11 @@ function dataGet(obj) { // obj = ul
 	//then()은 가져오는 과정이 끝난 이후에 함수를 실행
 }
 
+
 // onclick - btWing
-_btWing.addEventListener("click", () => {
+_btWing.addEventListener("click", (e) => {
 	var left = getComputedStyle(_lists).left.replace("px", "");
+	console.log(left);
 	var targetLeft = "-" + getComputedStyle(_lists).width;
 	if(left == 0) {
 		_lists.style.left = targetLeft;
