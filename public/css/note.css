@@ -43,7 +43,9 @@ header {
 	border-radius: 3px;
 	margin-right: 1rem;
 }
-
+#noteTxt:focus {
+	background-color: #f8f8f8;
+}
 .btn {
 	border-radius: 0;
 	border: none;
